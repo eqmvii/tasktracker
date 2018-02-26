@@ -9,6 +9,27 @@ A simple to-do list app built with Phoenix by Eric Mancini
 # DB tasks
 
 * Created DB via mix ecto.create
+* Ran a generator: 
+
+```
+
+mix phx.gen.schema Admin admins name:string number_of_pets:integer
+
+Sample code, not used:
+
+mix phx.gen.schema User users name:string email:string bio:string number_of_pets:integer
+mix phx.gen.schema Blog.Post blog_posts title:string views:integer
+
+```
+
+* Added an administrator:
+
+```
+iex -S mix
+alias Tasktracker.{Repo, Admin}
+Repo.insert(%Admin{name: "Eric Mancini", number_of_pets: 2})
+Repo.all(Admin)
+```
 
 # Phoenix boilerplate readme
 
