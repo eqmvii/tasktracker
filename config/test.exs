@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :tasktracker, Tasktracker.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "postgres",
+  password: "password",
   database: "tasktracker_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

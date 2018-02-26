@@ -1,5 +1,17 @@
 # Tasktracker
 
+A simple to-do list app built with Phoenix by Eric Mancini
+
+# Running and deploying
+
+* Run with mix phx.server
+
+# DB tasks
+
+* Created DB via mix ecto.create
+
+# Phoenix boilerplate readme
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
