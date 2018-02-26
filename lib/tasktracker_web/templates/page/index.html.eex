@@ -1,6 +1,17 @@
+<!-- some testing to verify data is being obtained from the database -->
+<%
+  admin_name = "Eric"
+  IO.puts "Admins: "
+  IO.puts inspect @admins
+  IO.puts "End admins"
+  [first_admin] = @admins
+  IO.puts inspect first_admin
+  IO.puts first_admin.name
+%>
+
 <div class="jumbotron">
   <h2><%= gettext "Welcome to %{name}!", name: "Tasktracker" %></h2>
-  <p class="lead">An app by Eric Mancini<br />That is a work in progress...</p>
+  <p class="lead">An app by <%= first_admin.name %>, accoridng to the database!<br />This is a work in progress...</p>
 </div>
 
 <div class="row marketing">

@@ -3,6 +3,9 @@ defmodule Tasktracker.Admin do
   import Ecto.Changeset
   alias Tasktracker.Admin
 
+  import Ecto.Query, warn: false
+  alias Tasktracker.Repo
+
 
   schema "admins" do
     field :name, :string
@@ -17,4 +20,9 @@ defmodule Tasktracker.Admin do
     |> cast(attrs, [:name, :number_of_pets])
     |> validate_required([:name, :number_of_pets])
   end
+
+  def list_admins do
+    Repo.all(Admin)
+  end
+  
 end
