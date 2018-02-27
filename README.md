@@ -1,5 +1,7 @@
 # Tasktracker
 
+[View the app live](https://tasktracker-eqmvii.herokuapp.com/)
+
 A simple to-do list app built with Phoenix by Eric Mancini
 
 # Running and deploying
