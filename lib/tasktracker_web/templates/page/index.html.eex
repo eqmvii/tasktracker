@@ -10,8 +10,8 @@
 %>
 
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}!", name: "Tasktracker" %></h2>
-  <p class="lead">An app by <%= first_admin.name %>, accoridng to the database!<br />This is a work in progress...</p>
+  <h2><%= first_admin.name %> <%= gettext "welcomes you to %{name}!", name: "Tasktracker" %></h2>
+  <p class="lead">By <%= first_admin.name %>, whose name came from the database!<br />This is a work in progress...</p>
 </div>
 
 <div class="row">
@@ -25,42 +25,13 @@
         <li><%= item %></li>
       <% end %>
     </ul>
-    <input type="text"></input>
-    <button type="btn-btn primary">Submit</button>
+    <link >
     </div>
   </div>
   <div class="col-md-4">
   </div>
 </div>
 
-<div class="row marketing">
-  <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
 
-  <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
-      </li>
-      <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
-      </li>
-    </ul>
-  </div>
+
 </div>

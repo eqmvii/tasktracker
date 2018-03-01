@@ -34,6 +34,20 @@ Repo.insert(%Admin{name: "Eric Mancini", number_of_pets: 2})
 Repo.all(Admin)
 ```
 
+* Created a 2nd table simple table with a generator:
+
+```
+mix phx.gen.schema Task tasks name:string
+mix ecto.migrate
+```
+
+* got greedy and grabbed another generator
+
+```
+mix phx.gen.html Todos Todo todos name:string priority:integer
+mix ecto.migrate
+```
+
 # Phoenix boilerplate readme
 
 To start your Phoenix server:
