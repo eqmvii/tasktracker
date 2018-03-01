@@ -21,9 +21,9 @@
     <div id="todo-container">
     <p class="text-center">Simple To-Do List</p>
     <ul>
-      <li><%= Enum.at(@todos, 0) %></li>
-      <li><%= Enum.at(@todos, 1) %></li>
-      <li><%= Enum.at(@todos, 2) %></li>
+      <%= for item <- @todos do %>
+        <li><%= item %></li>
+      <% end %>
     </ul>
     <input type="text"></input>
     <button type="btn-btn primary">Submit</button>
