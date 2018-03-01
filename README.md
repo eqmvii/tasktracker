@@ -6,7 +6,8 @@ A simple to-do list app built with Phoenix by Eric Mancini
 
 # Running and deploying
 
-* Run with mix phx.server
+* Run with `mix phx.server`
+* Run with an open iex connection: `iex -S mix phx.server`
 
 # DB tasks
 

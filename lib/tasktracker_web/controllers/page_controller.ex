@@ -3,6 +3,7 @@ defmodule TasktrackerWeb.PageController do
 
   def index(conn, _params) do
     admins = Tasktracker.Admin.list_admins()
-    render conn, "index.html", admins: admins
+    todos = ["Laundry", "sitting around", "learn elixir, phoenix, ruby, and rails"]
+    render conn, "index.html", admins: admins, todos: todos
   end
 end
