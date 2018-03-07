@@ -48,6 +48,12 @@ mix phx.gen.html Todos Todo todos name:string priority:integer
 mix ecto.migrate
 ```
 
+* The world's simplest uther authentication, let's get going with another generator
+
+```
+mix phx.gen.html Accounts User users name:string age:integer password:string
+```
+
 # Phoenix boilerplate readme
 
 To start your Phoenix server:

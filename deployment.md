@@ -1,5 +1,11 @@
 # Deployment Guide
 
+## New migration
+
+* `heroku run "POOL_SIZE=2 mix ecto.migrate"`
+
+## From scratch
+
 [Guide](https://hexdocs.pm/phoenix/heroku.html)
 
 1. Heroku create, with elixir buildpack, ex. `heroku create --buildpack "https://github.com/HashNuke/heroku-buildpack-elixir.git" #{name}`

@@ -1,12 +1,20 @@
 <!-- some testing to verify data is being obtained from the database -->
 <%
-  admin_name = "Eric"
-  IO.puts "Admins: "
-  IO.puts inspect @admins
-  IO.puts "End admins"
+  # admin_name = "Eric"
+  # IO.puts "Admins: "
+  # IO.puts inspect @admins
+  # IO.puts "End admins"
   [first_admin] = @admins
-  IO.puts inspect first_admin
-  IO.puts first_admin.name
+  # IO.puts inspect first_admin
+  # IO.puts first_admin.name
+  # IO.puts admin_name
+%>
+
+<%=
+
+  IO.puts "Main page conn.assigns: "
+  IO.puts inspect @conn.assigns 
+
 %>
 
 <div class="jumbotron">

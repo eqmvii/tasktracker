@@ -18,6 +18,9 @@
           <ul class="nav nav-pills pull-right">
             <li><a href="/">Return home</a></li>
             <li><%= link "Todo List", to: todo_path(@conn, :index) %></li>
+            <li><%= link "Users", to: user_path(@conn, :index) %></li>
+            <li><%= link "Login", to: sitesession_path(@conn, :new) %></li>
+
           </ul>
         </nav>
         <span class="logo"></span>
