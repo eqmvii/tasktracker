@@ -1,5 +1,7 @@
 defmodule TasktrackerWeb.SitesessionController do
     use TasktrackerWeb, :controller
+
+    alias Tasktracker.Repo
   
     # alias Tasktracker.Accounts
     # alias Tasktracker.Accounts.User
@@ -32,7 +34,13 @@ defmodule TasktrackerWeb.SitesessionController do
         put_flash(conn, :info, "SUBMITO!")
         admins = Tasktracker.Admin.list_admins()
         todos = [form_data["name"], "Laundry", "sitting around", "learn elixir, phoenix, ruby, and rails"]
-        # redirect(conn, to: page_path(conn, :index), name: "EDWARD")    
+        # redirect(conn, to: page_path(conn, :index), name: "EDWARD")
+        # Shockingly the below code basically works, and can probably form the skeleton of an authentication scheme.
+        # TODO: That
+        is_a_user = Repo.get_by(Tasktracker.Accounts.User, name: form_data["name"])
+        IO.puts "Did it work?"
+        IO.puts inspect is_a_user
+        IO.puts "You tell me!"
         render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos
     end
 
