@@ -1,6 +1,8 @@
 defmodule TasktrackerWeb.PageController do
   use TasktrackerWeb, :controller
 
+  plug :testplug
+
   def index(conn, _params) do
     admins = Tasktracker.Admin.list_admins()
     todos = ["Laundry", "sitting around", "learn elixir, phoenix, ruby, and rails"]
@@ -10,4 +12,9 @@ defmodule TasktrackerWeb.PageController do
     IO.puts "!!!!!!!!!!!!!!! SESSION DUMP: !!!!!!!!!!!!!!!"
     render conn, "index.html", admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
   end
+
+  defp testplug(conn, _) do
+    assign(conn, :plugtest, "Plug Test Worked!")
+  end 
+
 end
