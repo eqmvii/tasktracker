@@ -29,6 +29,7 @@ defmodule TasktrackerWeb.SitesessionController do
         IO.puts inspect conn.assigns
         IO.puts " ******************* End for submission ******************* "
         conn = assign(conn, :name, form_data["name"])
+        conn = put_session(conn, :logged_in_as, form_data["name"])
         IO.puts "conn.assigns: "
         IO.puts inspect conn.assigns    
         put_flash(conn, :info, "SUBMITO!")
@@ -41,7 +42,8 @@ defmodule TasktrackerWeb.SitesessionController do
         IO.puts "Did it work?"
         IO.puts inspect is_a_user
         IO.puts "You tell me!"
-        render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos
+        logged_in_user_name = get_session(conn, :logged_in_as)
+        render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
     end
 
 end

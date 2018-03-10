@@ -21,6 +21,7 @@ defmodule TasktrackerWeb.Router do
     resources "/users", UserController
     resources "/sitesession", SitesessionController, only: [:new, :index]
     post "/sitesession/test", SitesessionController, :test
+    get "/login", SiteSessionController, :login
   end
 
   # Other scopes may use custom stacks.

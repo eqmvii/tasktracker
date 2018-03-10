@@ -6,7 +6,8 @@ defmodule TasktrackerWeb.UserController do
 
   def index(conn, _params) do
     users = Accounts.list_users()
-    render(conn, "index.html", users: users)
+    logged_in_user_name = get_session(conn, :logged_in_as)
+    render(conn, "index.html", users: users, logged_in_user_name: logged_in_user_name)
   end
 
   def new(conn, _params) do
