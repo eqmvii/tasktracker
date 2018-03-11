@@ -4,6 +4,9 @@
 
 [Deployment info](deployment.md)
 
+[To-Do List for To-Do List App](todo.md)
+
+
 A simple to-do list app built with Phoenix by Eric Mancini
 
 # Running and deploying
