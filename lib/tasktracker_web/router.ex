@@ -7,6 +7,7 @@ defmodule TasktrackerWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :testplug
   end
 
   pipeline :api do
@@ -23,6 +24,11 @@ defmodule TasktrackerWeb.Router do
     post "/sitesession/test", SitesessionController, :test
     get "/login", SiteSessionController, :login
   end
+  
+  defp testplug(conn, _) do
+    jared = logged_in_user_name = get_session(conn, :logged_in_as)
+    assign(conn, :plugtest, jared)
+  end 
 
   # Other scopes may use custom stacks.
   # scope "/api", TasktrackerWeb do

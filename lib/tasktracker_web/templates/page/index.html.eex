@@ -41,7 +41,7 @@
         <li><%= item %></li>
       <% end %>
     </ul>
-    <link >
+    <h3>Plug test: <%= @conn.assigns.page_plug %></h3>
     </div>
   </div>
   <div class="col-md-4">

@@ -43,7 +43,8 @@ defmodule TasktrackerWeb.SitesessionController do
         IO.puts inspect is_a_user
         IO.puts "You tell me!"
         logged_in_user_name = get_session(conn, :logged_in_as)
-        render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
+        # render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
+        redirect(conn, to: page_path(conn, :index))
     end
 
 end

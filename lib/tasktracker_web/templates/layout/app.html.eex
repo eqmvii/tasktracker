@@ -43,6 +43,9 @@
       <main role="main">
         <%= render @view_module, @view_template, assigns %>
       </main>
+      <hr />
+      <h3 class="text-center">Hello <%= @conn.assigns.plugtest %></h3>
+
 
     </div> <!-- /container -->
     <div>
