@@ -1,9 +1,43 @@
-<h2>Listing Todos</h2>
+<h1 class="text-center">My Todos</h1>
 
 <table class="table">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Task</th>
+      <th>Priority</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for todo <- @my_todos do %>
+    <tr>
+      <td><%= todo.name %></td>
+      <td><%= todo.priority %></td>
+
+
+      <td class="text-right">
+        <span><%= link "Show", to: todo_path(@conn, :show, todo), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Edit", to: todo_path(@conn, :edit, todo), class: "btn btn-default btn-xs" %></span>
+        <span><%= link "Delete", to: todo_path(@conn, :delete, todo), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= link "Create New Todo", to: todo_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+<br />
+<hr />
+<br />
+
+<h2 class="text-center">All Todos</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task</th>
       <th>Priority</th>
       <th>user_id</th>
 
@@ -28,4 +62,7 @@
   </tbody>
 </table>
 
-<span><%= link "New Todo", to: todo_path(@conn, :new) %></span>
+<div class="text-center">
+  <%= link "Create New Todo", to: todo_path(@conn, :new), class: "btn btn-primary" %>
+</div>
+<br />

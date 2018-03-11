@@ -21,6 +21,20 @@ defmodule Tasktracker.Todos do
     Repo.all(Todo)
   end
 
+   @doc """
+  Returns thone user's list of todos.
+
+  ## Examples
+
+      iex> list_todos_by_id(1)
+      [%Todo{}, ...]
+
+  """
+  def list_todos_by_id(my_id) do
+    # Repo.all(Todo)
+    Repo.all(from t in Todo, where: t.user_id == ^my_id, order_by: t.priority)
+  end
+
   @doc """
   Gets a single todo.
 

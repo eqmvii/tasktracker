@@ -40,13 +40,7 @@
 
     </div> <!-- /container -->
     <div>
-    <%
 
-      IO.puts "%%%%%%%%%%%%%% Conn.Assigns %%%%%%%%%%%%%%%%%%"
-      IO.puts inspect @conn.assigns, pretty: true, limit: 30000
-      IO.puts "%%%%%%%%%%%%%% Conn.Assigns %%%%%%%%%%%%%%%%%%"
-
-    %>
     </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>

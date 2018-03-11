@@ -17,6 +17,7 @@ defmodule Tasktracker.Accounts.User do
   def changeset(%User{} = user, attrs) do
     user
     |> cast(attrs, [:name, :age, :password])
+    |> unique_constraint(:name)
     |> validate_required([:name, :age, :password])
   end
 end

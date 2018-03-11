@@ -8,11 +8,6 @@ defmodule TasktrackerWeb.SitesessionController do
 
     # noodles should probably be _params
     def index(conn, noodles) do
-        IO.puts "!!!!!!!!!!!!!!! Params to sitesession_controller !!!!!!!!!!!!!!"
-        IO.puts inspect noodles
-        IO.puts "conn.assigns: "
-        IO.puts inspect conn.assigns
-        IO.puts "___________________________"
         render conn, "index.html"
     end
 
@@ -33,7 +28,6 @@ defmodule TasktrackerWeb.SitesessionController do
             is_a_user ->
                 cond do
                     is_a_user.password == form_data["password"] ->
-                        IO.puts " % % % % % % % % % LOG IN SUCCESS % % % % % % % % % "
                         conn = put_session(conn, :logged_in_as, form_data["name"])
                         conn = put_session(conn, :user_id, is_a_user.id)
                         conn = put_session(conn, :logged_in, true)
