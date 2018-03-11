@@ -2,7 +2,13 @@
 
 ## New migration
 
-* `heroku run "POOL_SIZE=2 mix ecto.migrate"`
+* To create the migration file, run: `mix ecto.gen.migration`
+
+* Then add your DB changes into that file
+
+* Then locally run: `mix ecto.migrate`
+
+* Then to get Heroku on board, run: `heroku run "POOL_SIZE=2 mix ecto.migrate"`
 
 ## From scratch
 
