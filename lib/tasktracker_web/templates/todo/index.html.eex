@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Priority</th>
+      <th>user_id</th>
 
       <th></th>
     </tr>
@@ -14,6 +15,8 @@
     <tr>
       <td><%= todo.name %></td>
       <td><%= todo.priority %></td>
+      <td><%= todo.user_id %></td>
+
 
       <td class="text-right">
         <span><%= link "Show", to: todo_path(@conn, :show, todo), class: "btn btn-default btn-xs" %></span>

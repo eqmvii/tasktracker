@@ -12,6 +12,11 @@
     <%= @todo.priority %>
   </li>
 
+  <li>
+    <strong>user_id:</strong>
+    <%= @todo.user_id %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: todo_path(@conn, :edit, @todo) %></span>

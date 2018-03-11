@@ -26,8 +26,8 @@ defmodule TasktrackerWeb.Router do
   end
   
   defp testplug(conn, _) do
-    jared = logged_in_user_name = get_session(conn, :logged_in_as)
-    assign(conn, :plugtest, jared)
+    logged_in_user_name = get_session(conn, :logged_in_as)
+    conn = assign(conn, :plugtest, logged_in_user_name)
   end 
 
   # Other scopes may use custom stacks.

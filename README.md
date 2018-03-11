@@ -56,6 +56,10 @@ mix ecto.migrate
 mix phx.gen.html Accounts User users name:string age:integer password:string
 ```
 
+# Milestones
+
+3/10/2018 - rudimentary login/authentication route added
+
 # Phoenix boilerplate readme
 
 To start your Phoenix server:

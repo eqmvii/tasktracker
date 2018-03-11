@@ -15,6 +15,15 @@ defmodule TasktrackerWeb.TodoController do
   end
 
   def create(conn, %{"todo" => todo_params}) do
+    user_id = get_session(conn, :user_id)
+    IO.puts "% % % % % % todo_params % % % % % % % % %"
+    IO.puts inspect "todo params are "
+    IO.puts inspect todo_params
+    IO.puts "... user_id is ..."
+    IO.puts inspect user_id
+    IO.puts "% % % % % % todo_params % % % % % % % % %"
+    todo_params = Map.put(todo_params, "user_id", user_id)
+
     case Todos.create_todo(todo_params) do
       {:ok, todo} ->
         conn
@@ -26,6 +35,7 @@ defmodule TasktrackerWeb.TodoController do
   end
 
   def show(conn, %{"id" => id}) do
+    # TODO: Only fetch todos for the authenticated user for this assign
     todo = Todos.get_todo!(id)
     render(conn, "show.html", todo: todo)
   end
