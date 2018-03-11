@@ -5,11 +5,11 @@
 * Make less ugly / add any CSS at all (1)
 * Add Foundation (3)
 * Add bcrypt/guardian (2)
-* Change password to an option (1)
+* Change password to an option (1)* Add logout (1)
 * Add jQuery version of front-end (2)
 * Add React version of front-end (3)
 * Add todo list sharing and friend/social feature (5)
 * Add screenshots to readme.md (1)
 * Add project to portfolio (1)
-* Add logout (1)
 * Fix logic in that one file (1)
+* Fix deleting one user if that user has already created todos

@@ -44,12 +44,7 @@ defmodule TasktrackerWeb.SitesessionController do
                 conn = put_session(conn, :logged_in_as, "Guest (wrong username)")
         end
 
-        is_correct_password = Repo.get_by(Tasktracker.Accounts.User, password: form_data["password"])
-
-        IO.puts "Did it work?"
-        IO.puts inspect is_a_user
-        IO.puts inspect is_correct_password
-        IO.puts "You tell me!"
+        # is_correct_password = Repo.get_by(Tasktracker.Accounts.User, password: form_data["password"]
         # logged_in_user_name = get_session(conn, :logged_in_as)
         # render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
         redirect(conn, to: page_path(conn, :index))
