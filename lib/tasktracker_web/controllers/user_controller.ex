@@ -19,6 +19,7 @@ defmodule TasktrackerWeb.UserController do
 
   # TODO: Refactor this
   def create(conn, %{"user" => user_params}) do
+    # TODO: Ensure uniqueness, i.e. have an error if account already exists
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         conn
