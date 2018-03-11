@@ -23,6 +23,7 @@ defmodule TasktrackerWeb do
       import Plug.Conn
       import TasktrackerWeb.Router.Helpers
       import TasktrackerWeb.Gettext
+      import TasktrackerWeb.AuthPlug, only: [authenticate_user: 2] # new import for custom plug
     end
   end
 

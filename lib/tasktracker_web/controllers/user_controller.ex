@@ -4,6 +4,8 @@ defmodule TasktrackerWeb.UserController do
   alias Tasktracker.Accounts
   alias Tasktracker.Accounts.User
 
+  plug :authenticate_user when action not in [:new]
+
   def index(conn, _params) do
     users = Accounts.list_users()
     logged_in_user_name = get_session(conn, :logged_in_as)

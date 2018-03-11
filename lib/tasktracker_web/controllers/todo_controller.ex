@@ -4,6 +4,8 @@ defmodule TasktrackerWeb.TodoController do
   alias Tasktracker.Todos
   alias Tasktracker.Todos.Todo
 
+  plug :authenticate_user
+
   def index(conn, _params) do
     todos = Todos.list_todos()
     render(conn, "index.html", todos: todos)
