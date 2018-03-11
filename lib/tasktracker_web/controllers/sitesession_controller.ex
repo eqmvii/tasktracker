@@ -37,7 +37,7 @@ defmodule TasktrackerWeb.SitesessionController do
                         IO.puts " % % % % % % % % % LOG IN SUCCESS % % % % % % % % % "
                         conn = put_session(conn, :logged_in_as, form_data["name"])
                     true ->
-                        conn = put_session(conn, :logged_in_as, "Guest (wrong password")
+                        conn = put_session(conn, :logged_in_as, "Guest (wrong password)")
                 end
             true ->
                 conn = put_session(conn, :logged_in_as, "Guest (wrong username)")
