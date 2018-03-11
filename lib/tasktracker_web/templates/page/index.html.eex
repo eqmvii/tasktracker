@@ -1,12 +1,6 @@
 <!-- some testing to verify data is being obtained from the database -->
 
 <%
-  the_logged_in_user = "Freeeed"
-  # a_logged_in_user_name = get_session(conn, :name)
-
-%>
-
-<%
   # admin_name = "Eric"
   # IO.puts "Admins: "
   # IO.puts inspect @admins
@@ -17,7 +11,7 @@
   # IO.puts admin_name
 %>
 
-<%=
+<%
 
   IO.puts "Main page conn.assigns: "
   IO.puts inspect @conn.assigns 
@@ -25,9 +19,8 @@
 %>
 
 <div class="jumbotron">
-  <h1>hullo <%= the_logged_in_user %></h1>
   <h2><%= first_admin.name %> <%= gettext "welcomes you to %{name}!", name: "Tasktracker" %></h2>
-  <p class="lead">By <%= first_admin.name %>, whose name came from the database!<br />This is a work in progress...</p>
+  <p class="lead">By <%= first_admin.name %>, whose name came from the database!</p>
 </div>
 
 <div class="row">
@@ -35,13 +28,12 @@
   </div>
   <div class="col-md-4">
     <div id="todo-container">
-    <p class="text-center">Simple To-Do List</p>
     <ul>
       <%= for item <- @todos do %>
         <li><%= item %></li>
       <% end %>
     </ul>
-    <h3>Plug test: <%= @conn.assigns.page_plug %></h3>
+    <p>Plug test: <strong><%= @conn.assigns.page_plug %></strong></p>
     </div>
   </div>
   <div class="col-md-4">

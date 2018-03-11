@@ -1,13 +1,3 @@
-<%
-  # the_logged_user = get_session(@conn, :message)
-  the_logged_user = "Mr. Magoo"
-  # raise inspect assigns
-  if assigns[:logged_in_user_name] do
-    the_logged_user = @conn.assigns.logged_in_user_name
-  end
-%>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +16,6 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="#">Hi <%= the_logged_user %></a></li>
             <li><a href="/">Return home</a></li>
             <li><%= link "Todo List", to: todo_path(@conn, :index) %></li>
             <li><%= link "Users", to: user_path(@conn, :index) %></li>
