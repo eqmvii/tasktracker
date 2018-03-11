@@ -29,7 +29,9 @@ defmodule TasktrackerWeb.UserController do
         |> put_flash(:info, "Registration succesful!")
         |> redirect(to: user_path(conn, :show, user))
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        conn
+        |> put_flash(:error, "Error creating user")
+        |> render("new.html", changeset: changeset)
     end
   end
 
