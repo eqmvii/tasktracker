@@ -11,3 +11,5 @@
 * Add todo list sharing and friend/social feature (5)
 * Add screenshots to readme.md (1)
 * Add project to portfolio (1)
+* Add logout (1)
+* Fix logic in that one file (1)

@@ -22,7 +22,8 @@ defmodule TasktrackerWeb.Router do
     resources "/users", UserController
     resources "/sitesession", SitesessionController, only: [:new, :index]
     post "/sitesession/test", SitesessionController, :test
-    get "/login", SiteSessionController, :login
+    # get "/login", SiteSessionController, :login
+    get "/logout", SitesessionController, :logout
   end
   
   defp testplug(conn, _) do

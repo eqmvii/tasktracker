@@ -21,7 +21,6 @@ defmodule TasktrackerWeb.SitesessionController do
         render(conn, "new.html")
     end
 
-    # This will render the top to-do as whatever the user put into their form
     def test(conn, form_data) do
         # conn = assign(conn, :name, form_data["name"])
         # admins = Tasktracker.Admin.list_admins()
@@ -53,6 +52,13 @@ defmodule TasktrackerWeb.SitesessionController do
         IO.puts "You tell me!"
         # logged_in_user_name = get_session(conn, :logged_in_as)
         # render conn, TasktrackerWeb.PageView, :index, admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
+        redirect(conn, to: page_path(conn, :index))
+    end
+
+    def logout(conn, _) do
+        conn = put_session(conn, :logged_in, false)
+        conn = put_session(conn, :logged_in_as, nil)
+        conn = put_session(conn, :user_id, nil)
         redirect(conn, to: page_path(conn, :index))
     end
 
