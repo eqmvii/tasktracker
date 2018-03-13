@@ -1,5 +1,5 @@
 <h1 class="text-center">My Todos</h1>
-
+<hr />
 <div class="todo-box-container">
   <%= for todo <- @my_todos do %>
   <div class="todo">
@@ -14,7 +14,7 @@
 <br />
 
 <div class="text-center">
-  <%= link "Create New Todo", to: todo_path(@conn, :new), class: "btn btn-primary" %>
+  <%= link "Create Todo", to: todo_path(@conn, :new), class: "btn btn-primary" %>
 </div>
 
 <br />

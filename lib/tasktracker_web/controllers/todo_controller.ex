@@ -32,7 +32,7 @@ defmodule TasktrackerWeb.TodoController do
     case Todos.create_todo(todo_params) do
       {:ok, _} ->
         conn
-        |> put_flash(:info, "Todo created successfully.")
+        # |> put_flash(:info, "Todo created successfully.")
         |> redirect(to: todo_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
