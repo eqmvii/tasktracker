@@ -3,3 +3,28 @@
 body {
     background-color: #eedefc !important;
 }
+
+.todo-box-container {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.todo {
+    color: #330b4c;
+    border: 2px solid #330b4c;
+    border-radius: 3px;
+    background-color: white;
+    padding: 8px;
+    font-size: 16px;
+    font-family: sans-serif;
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.todo-name {
+    margin-left: 10px;
+}
