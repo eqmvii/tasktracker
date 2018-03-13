@@ -3,8 +3,8 @@
 <div class="todo-box-container">
   <%= for todo <- @my_todos do %>
   <div class="todo">
-      <%= link "✓", to: todo_path(@conn, :delete, todo), method: :delete, class: "btn btn-primary btn-xs" %>
-      <span class="todo-name"><%= todo.name %> (<%= Integer.to_string(todo.priority) %>)</span>
+      <%= link "✓", to: todo_path(@conn, :delete, todo), method: :delete, class: "btn btn-primary btn-xs todo-checkbox" %>
+      <span class="todo-text"><%= todo.name %> (<%= Integer.to_string(todo.priority) %>)</span>
       </div>
   <% end %>
 </div>
