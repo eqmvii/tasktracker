@@ -30,10 +30,10 @@ defmodule TasktrackerWeb.TodoController do
     todo_params = Map.put(todo_params, "user_id", user_id)
 
     case Todos.create_todo(todo_params) do
-      {:ok, todo} ->
+      {:ok, _} ->
         conn
         |> put_flash(:info, "Todo created successfully.")
-        |> redirect(to: todo_path(conn, :show, todo))
+        |> redirect(to: todo_path(conn, :index))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
