@@ -20,12 +20,13 @@
             <li><%= link "Todo List", to: todo_path(@conn, :index) %></li>
             <li><%= link "Users", to: user_path(@conn, :index) %></li>
             <%#= if assigns[:logged_in] do %>
-            <%= if true do %>
+            <!-- TODO: Add conditional logic to ensure the variable exists? -->
+            <%= if @conn.assigns.logged_in == false do %>
             <li>
               <%= link "Register", to: user_path(@conn, :new) %>
             </li>
-            <%= end %>
-            <%= if true do %>
+            <% end %>
+            <%= if @conn.assigns.logged_in == false do %>
             <li>
               <%= link "Login", to: sitesession_path(@conn, :new) %>
             </li>
