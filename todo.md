@@ -12,4 +12,6 @@
 * Add screenshots to readme.md (1)
 * Add project to portfolio (1)
 * Fix logic in that one file (1)
-* Fix deleting one user if that user has already created todos
+* Fix deleting one user if that user has already created todos (2)
+* Vix redirects after login, todo add, etc. (1)
+* Make todos come in nice little divs (1)

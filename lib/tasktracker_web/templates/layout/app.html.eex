@@ -19,8 +19,17 @@
             <li><a href="/">Return home</a></li>
             <li><%= link "Todo List", to: todo_path(@conn, :index) %></li>
             <li><%= link "Users", to: user_path(@conn, :index) %></li>
-            <li><%= link "Register", to: user_path(@conn, :new) %></li>
-            <li><%= link "Login", to: sitesession_path(@conn, :new) %></li>
+            <%#= if assigns[:logged_in] do %>
+            <%= if true do %>
+            <li>
+              <%= link "Register", to: user_path(@conn, :new) %>
+            </li>
+            <%= end %>
+            <%= if true do %>
+            <li>
+              <%= link "Login", to: sitesession_path(@conn, :new) %>
+            </li>
+            <% end %>
             <li><%= link "Logout", to: sitesession_path(@conn, :logout) %></li>
 
           </ul>
@@ -36,6 +45,8 @@
       </main>
       <hr />
       <h3 class="text-center">Hello <%= @conn.assigns.plugtest %></h3>
+      <h3 class="text-center">Logged in: <%= @conn.assigns.logged_in %></h3>
+
 
 
     </div> <!-- /container -->

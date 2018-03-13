@@ -26,9 +26,23 @@ defmodule TasktrackerWeb.Router do
     get "/logout", SitesessionController, :logout
   end
   
+  # TODO: Move this plug somewhere thta like, it has any business being?
   defp testplug(conn, _) do
-    logged_in_user_name = get_session(conn, :logged_in_as)
-    conn = assign(conn, :plugtest, logged_in_user_name)
+    # logged_in_user_name = get_session(conn, :logged_in_as)
+    # IO.puts inspect logged_in_user_name
+    case get_session(conn, :logged_in_as) do
+      nil ->
+        conn = assign(conn, :logged_in, false)
+        conn = assign(conn, :plugtest, "")
+      anything ->
+        conn = assign(conn, :plugtest, anything)
+        conn = assign(conn, :logged_in, true)
+      true ->
+        IO.puts "no idea"
+        conn = assign(conn, :plugtest, "WOLOLOLOLO weird error")
+        conn = assign(conn, :logged_in, "walrus")
+    end
+    conn
   end 
 
   # Other scopes may use custom stacks.
