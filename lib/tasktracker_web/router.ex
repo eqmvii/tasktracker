@@ -25,6 +25,14 @@ defmodule TasktrackerWeb.Router do
     # get "/login", SiteSessionController, :login
     get "/logout", SitesessionController, :logout
   end
+
+  # API
+  scope "/api", TasktrackerWeb do
+    pipe_through :api
+
+    get "/", PageController, :blob
+
+  end
   
   # TODO: Move this plug somewhere thta like, it has any business being?
   defp testplug(conn, _) do

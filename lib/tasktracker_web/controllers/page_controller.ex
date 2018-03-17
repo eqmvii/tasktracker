@@ -10,6 +10,10 @@ defmodule TasktrackerWeb.PageController do
     render conn, "index.html", admins: admins, todos: todos, logged_in_user_name: logged_in_user_name
   end
 
+  def blob(conn, _params) do
+    json conn, %{name: "Eric", JSON: true, test_list: [1, "a", 3]}
+  end
+
   defp testplug(conn, _) do
     assign(conn, :page_plug, "Worked!")
   end 
