@@ -1,17 +1,17 @@
 # Tasks (and rough points estimates)
 
-* Make a plug for general authenticated-user-only access (2)
-* Make to-dos only visible to the user that logged in (2)
 * Make less ugly / add any CSS at all (1)
 * Add Foundation (3)
 * Add bcrypt/guardian (2)
-* Change password to an option (1)* Add logout (1)
 * Add jQuery version of front-end (2)
 * Add React version of front-end (3)
 * Add todo list sharing and friend/social feature (5)
 * Add screenshots to readme.md (1)
 * Add project to portfolio (1)
-* Fix logic in that one file (1)
-* Fix deleting one user if that user has already created todos (2)
+* Fix logic in that one file - like all warnings about using elixir wrong (there are plenty to choose from) (1)
 * Vix redirects after login, todo add, etc. (1)
-* Clean up this todo list
+* Clean up this todo list (a lot)
+
+## Add JSON routes for the DB
+
+## Add many-to-many table for user relationships
