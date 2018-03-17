@@ -14,6 +14,4 @@
 * Fix logic in that one file (1)
 * Fix deleting one user if that user has already created todos (2)
 * Vix redirects after login, todo add, etc. (1)
-* Make todos come in nice little divs (1)
-* Make login and register links invisible to a logged in user
 * Clean up this todo list

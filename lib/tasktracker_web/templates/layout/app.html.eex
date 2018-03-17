@@ -27,6 +27,8 @@
             </li>
             <% end %>
             <%= if @conn.assigns.logged_in == false do %>
+            <% # this is the is_nil version, to safely see if anything was even put into assigns %>
+            <%#= if !is_nil(@conn.assigns[:component_engine]) do %>
             <li>
               <%= link "Login", to: sitesession_path(@conn, :new) %>
             </li>

@@ -1,3 +1,3 @@
 defmodule TasktrackerWeb.TodoView do
-  use TasktrackerWeb, :view
-end
+    use TasktrackerWeb, :view
+  end
