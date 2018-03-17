@@ -11,7 +11,7 @@ defmodule TasktrackerWeb.PageController do
   end
 
   def blob(conn, _params) do
-    json conn, %{name: "Eric", JSON: true, test_list: [1, "a", 3]}
+    json conn, %{name: "Eric 'from a JSON route' Mancini", JSON: true, test_list: [1, "a", 3]}
   end
 
   defp testplug(conn, _) do
