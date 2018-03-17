@@ -58,4 +58,12 @@
     </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
+  <script>
+    // this script seems to populate the window object
+    console.log("Script being run from layout!");
+    var layout_dinosaur = {
+      roar: function() { console.log("LAYOUT ROAR!"); },
+      stomp: function() { console.log("Too tired to stomp in layout."); }
+    }
+  </script>
 </html>
