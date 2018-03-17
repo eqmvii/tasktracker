@@ -16,8 +16,8 @@ defmodule TasktrackerWeb.TodoController do
     my_todos = Todos.list_todos_by_id(my_id)
     IO.puts inspect my_todos
     IO.puts " % % % % % % % % % % % % % %  % % % % "
-
-    render(conn, "index.html", todos: todos, my_todos: my_todos)
+    changeset = Todos.change_todo(%Todo{})
+    render(conn, "index.html", todos: todos, my_todos: my_todos, changeset: changeset)
   end
 
   def new(conn, _params) do

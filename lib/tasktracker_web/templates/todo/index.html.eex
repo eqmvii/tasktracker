@@ -12,9 +12,35 @@
 <br />
 <hr />
 <br />
+<%# raise inspect @changeset %>
+<div id="QuickAdd" class="text-center">
+<%= form_for @changeset, todo_path(@conn, :create), fn f -> %>
+
+  <div class="form-group">
+    <%= label f, :name, class: "control-label" %>
+    <%= text_input f, :name, class: "form-control", maxlength: 20 %>
+    <%= error_tag f, :name %>
+  </div>
+
+    <div class="form-group">
+    <%= label f, :priority, class: "control-label" %>
+    <%= select f, :priority, 1..5, class: "form-control" %>
+    <%= error_tag f, :priority %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %> <!-- end quick form -->
+
+
+</div>
+
+<hr />
+
 
 <div class="text-center">
-  <%= link "Create Todo", to: todo_path(@conn, :new), class: "btn btn-primary" %>
+  <%= link "Create Todo Form", to: todo_path(@conn, :new), class: "btn btn-primary" %>
 </div>
 
 <br />
