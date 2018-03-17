@@ -4,7 +4,7 @@
   <%= for todo <- @my_todos do %>
   <div class="todo">
       <%= link "✓", to: todo_path(@conn, :delete, todo), method: :delete, class: "btn btn-primary btn-xs todo-checkbox" %>
-      <span class="todo-text"><%= todo.name %> (<%= Integer.to_string(todo.priority) %>)</span>
+      <span class="todo-text"><%= name_shorten(todo.name) %> (<%= Integer.to_string(todo.priority) %>)</span>
       </div>
   <% end %>
 </div>
