@@ -15,7 +15,7 @@ defmodule TasktrackerWeb.PageController do
   end
 
   defp testplug(conn, _) do
-    assign(conn, :page_plug, "Worked!")
+    assign(conn, :page_plug, "page_plug Worked!")
   end 
 
 end

@@ -12,6 +12,8 @@ defmodule TasktrackerWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session # added for authentication?
+    plug :fetch_flash
   end
 
   scope "/", TasktrackerWeb do
@@ -29,8 +31,11 @@ defmodule TasktrackerWeb.Router do
   # API
   scope "/api", TasktrackerWeb do
     pipe_through :api
+    
 
     get "/", PageController, :blob
+    # resources "/todos", TodoControllerApi
+    get "/todos", TodoControllerApi, :index
 
   end
   
