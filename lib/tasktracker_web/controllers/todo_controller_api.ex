@@ -22,6 +22,13 @@ defmodule TasktrackerWeb.TodoControllerApi do
     json conn, %{todos: todos, logged_in_as: me_irl}
   end
 
+  # TODO (ha) - make this also return the user?
+  def show(conn, %{"id" => id}) do
+    todo = Todos.get_todo!(id) |> Map.take([:name, :priority, :id, :user_id])
+    # render(conn, "show.html", todo: todo)
+    json conn, %{todos: todo}
+  end
+
   # # #
   # below this line is copied from todo_controller without being updated for the API
   # # #

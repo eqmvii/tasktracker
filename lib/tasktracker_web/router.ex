@@ -36,6 +36,7 @@ defmodule TasktrackerWeb.Router do
     get "/", PageController, :blob
     # resources "/todos", TodoControllerApi
     get "/todos", TodoControllerApi, :index
+    get "/todos/:id", TodoControllerApi, :show
 
   end
   

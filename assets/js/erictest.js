@@ -32,5 +32,19 @@ $.ajax({
     url: "/api/todos"
 }).done(function (data) {
     console.log(data);
-    console.log(`I am logged in as ${data.logged_in_as}!`);
+    console.log(`I am logged in as ${data.logged_in_as}! I'll re-ajax each todo now:`);
+    //console.log(data.todos);
+    var loop_length = data.todos.length > 6 ? 6 : data.todos.length;
+    for (let i = 0; i < loop_length; i++){
+        $.ajax({
+            url: `/api/todos/${data.todos[i].id}`
+        }).done(function (data) {
+            console.log(data);
+        })
+        
+    }
 });
+
+// loop through todos and AJAX each one
+
+

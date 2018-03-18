@@ -54,6 +54,7 @@
     <tr>
       <th>Task</th>
       <th>Priority</th>
+      <th>id</th>
       <th>user_id</th>
 
       <th></th>
@@ -64,6 +65,7 @@
     <tr>
       <td><%= todo.name %></td>
       <td><%= todo.priority %></td>
+      <td><%= todo.id %>
       <td><%= todo.user_id %></td>
 
 
