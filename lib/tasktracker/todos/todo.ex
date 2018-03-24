@@ -20,5 +20,3 @@ defmodule Tasktracker.Todos.Todo do
     |> validate_required([:name, :priority, :user_id])
   end
 end
-
-# TODO: Migrate this to belong to user

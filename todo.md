@@ -17,4 +17,10 @@
 * WIP!
 
 ## Add many-to-many table for user relationships
-* Sounds hard!
+* Sounds hard! Maybe do something different? 
+* Instead of many to many, look into this kind of relation table: http://www.codedodle.com/2014/12/social-network-friends-database.html
+* Also think: do we really need many-to-many, or are we hard coding a single pairing?
+
+# User picture upload
+* Image data into a table, sounds exciting!
+* https://medium.com/@Stephanbv/elixir-phoenix-uploading-images-locally-with-arc-b1d5ec88f7a
