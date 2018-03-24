@@ -40,6 +40,15 @@ defmodule TasktrackerWeb.UserController do
     render(conn, "show.html", user: user)
   end
 
+  def me(conn, _) do
+    # raise inspect "hello"
+    # user = Accounts.get_user!(id)
+    # render(conn, "show.html", user: user)
+    my_id = get_session(conn, :user_id)
+    user = Accounts.get_user!(my_id)
+    render(conn, "show.html", user: user)
+  end
+
   def edit(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
     changeset = Accounts.change_user(user)
