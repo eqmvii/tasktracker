@@ -41,12 +41,33 @@ defmodule TasktrackerWeb.UserController do
   end
 
   def me(conn, _) do
-    # raise inspect "hello"
-    # user = Accounts.get_user!(id)
-    # render(conn, "show.html", user: user)
     my_id = get_session(conn, :user_id)
     user = Accounts.get_user!(my_id)
-    render(conn, "show.html", user: user)
+    render(conn, "me.html", user: user)
+  end
+
+  def connect(conn, %{"id" => id}) do
+    my_id = get_session(conn, :user_id)
+    user = Accounts.get_user!(my_id)
+
+    # |> cast(attrs, [:user_one_id, :user_two_id, :status, :last_moving_user])
+
+    connection_params = %{user_one_id: 7, user_two_id: 16, status: 17, last_moving_user: 17}
+
+    case Accounts.create_connection(connection_params) do
+      {:ok, connection} ->
+        conn
+        |> put_flash(:info, "Connection creation succesful #{connection.status}!")
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "Error creating connection")
+    end
+
+    raise inspect connection_params, pretty: true, limit: 300000
+
+    conn
+      # |> put_flash(:info, "Your target id:")
+      |> render("me.html", user: user)
   end
 
   def edit(conn, %{"id" => id}) do

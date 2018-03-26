@@ -7,6 +7,8 @@ defmodule Tasktracker.Accounts do
   alias Tasktracker.Repo
 
   alias Tasktracker.Accounts.User
+  alias Tasktracker.Accounts.Connection
+
 
   @doc """
   Returns the list of users.
@@ -54,6 +56,30 @@ defmodule Tasktracker.Accounts do
     |> User.changeset(attrs)
     |> Repo.insert()
   end
+
+  # ------------------------------------------------------
+  # TODO: This is where I am. The connection data is getting inserted. Something weird is happening with redirect.
+  def create_connection(attrs \\ %{}) do
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+
+    IO.puts inspect attrs, pretty: true, limit: 30000
+    IO.puts inspect list_connections, pretty: true, limit: 30000
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+
+    %Connection{}
+    |> Connection.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def list_connections do
+    Repo.all(Connection)
+  end
+  # ------------------------------------------------------
 
   @doc """
   Updates a user.

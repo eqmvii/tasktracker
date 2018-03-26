@@ -3,11 +3,13 @@ defmodule Tasktracker.Accounts.User do
   import Ecto.Changeset
   alias Tasktracker.Accounts.User
   alias Tasktracker.Todos.Todo
+  alias Tasktracker.Accounts.Connection
 
   schema "users" do
     field :age, :integer
     field :name, :string
     field :password, :string
+    has_many :connections, Connection
     has_many :todos, Todo
 
     timestamps()

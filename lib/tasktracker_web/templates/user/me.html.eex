@@ -1,6 +1,5 @@
-<h3 class="text-center">Hello <%= @conn.assigns.plugtest %></h3>
-
-<h3>Account Details for <%= @user.name %>:</h3>
+<h2 class="text-center">Hello <%= @user.name %>!</h2>
+<h3>Your Account Details:</h3>
 
 <ul>
 
@@ -20,10 +19,6 @@
   </li>
 
 </ul>
-
-<!-- TODO: check to see if possible and build this out -->
-<span class="text-center"><%= link "Connect to Me", to: user_path(@conn, :connect, @user) %></span>
-
 
 <!--
 <span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
