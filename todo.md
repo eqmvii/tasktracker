@@ -24,3 +24,5 @@
 # User picture upload
 * Image data into a table, sounds exciting!
 * https://medium.com/@Stephanbv/elixir-phoenix-uploading-images-locally-with-arc-b1d5ec88f7a
+
+# Get datagrip
