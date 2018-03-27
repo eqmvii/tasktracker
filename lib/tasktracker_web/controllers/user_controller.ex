@@ -9,7 +9,8 @@ defmodule TasktrackerWeb.UserController do
   def index(conn, _params) do
     users = Accounts.list_users()
     logged_in_user_name = get_session(conn, :logged_in_as)
-    render(conn, "index.html", users: users, logged_in_user_name: logged_in_user_name)
+    connections = Accounts.list_connections()
+    render(conn, "index.html", users: users, logged_in_user_name: logged_in_user_name, connections: connections)
   end
 
   def new(conn, _params) do
@@ -52,7 +53,7 @@ defmodule TasktrackerWeb.UserController do
 
     # |> cast(attrs, [:user_one_id, :user_two_id, :status, :last_moving_user])
 
-    connection_params = %{user_one_id: 7, user_two_id: 16, status: 17, last_moving_user: 17}
+    connection_params = %{user_one_id: my_id, user_two_id: String.to_integer(id), status: 17, last_moving_user: 17}
 
     case Accounts.create_connection(connection_params) do
       {:ok, connection} ->

@@ -62,13 +62,11 @@ defmodule Tasktracker.Accounts do
   def create_connection(attrs \\ %{}) do
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
-
-    IO.puts inspect attrs, pretty: true, limit: 30000
-    IO.puts inspect list_connections, pretty: true, limit: 30000
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
-
+    # IO.puts inspect attrs, pretty: true, limit: 30000
+    # IO.puts inspect list_connections, pretty: true, limit: 30000
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
-
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
 
     %Connection{}

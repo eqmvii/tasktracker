@@ -27,6 +27,37 @@
     </tr>
 <% end %>
   </tbody>
+  </table>
+
+  <hr />
+  <h3 class="text-center">Connections</h3>
+  <hr />
+
+  <table class="table">
+  <thead>
+    <tr>
+      <th>user_one_id</th>
+      <th>user_two_id</th>
+      <th>status</th>
+      <th>last_moving_user</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for connection <- @connections do %>
+    <tr>
+      <td><%= connection.user_one_id %></td>
+      <td><%= connection.user_two_id %></td>
+      <td><%= connection.status %></td>
+      <td><%= connection.last_moving_user %></td>
+
+      <td class="text-right">
+       Moose
+      </td>
+    </tr>
+<% end %>
+  </tbody>
 </table>
 
 <span><%= link "New User", to: user_path(@conn, :new) %></span>
