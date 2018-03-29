@@ -77,6 +77,15 @@ defmodule Tasktracker.Accounts do
   def list_connections do
     Repo.all(Connection)
   end
+
+  def am_i_connected_to_you(my_id, your_id) do
+    # Repo.get!(User, id)
+
+    # query = from c in "conections", where: c.user_one_id == my_id, select: u.name
+    query = from c in Connection, select: count(c.id)
+    raise inspect Repo.all(query), pretty: true, limit: 30000
+    
+  end
   # ------------------------------------------------------
 
   @doc """

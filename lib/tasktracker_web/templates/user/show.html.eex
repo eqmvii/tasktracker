@@ -19,6 +19,11 @@
     <%= @user.password %>
   </li>
 
+    <li>
+    <strong>ID:</strong>
+    <%= @user.id %>
+  </li>
+
 </ul>
 
 <!-- TODO: check to see if possible and build this out -->

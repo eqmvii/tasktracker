@@ -64,6 +64,7 @@ defmodule TasktrackerWeb.UserController do
         |> put_flash(:error, "Error creating connection")
     end
 
+    Accounts.am_i_connected_to_you(0,0)
     raise inspect connection_params, pretty: true, limit: 300000
 
     conn
