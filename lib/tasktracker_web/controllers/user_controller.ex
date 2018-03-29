@@ -65,8 +65,8 @@ defmodule TasktrackerWeb.UserController do
     end
 
     # !! work on this make it work: pass my_id and this users id
-    Accounts.am_i_connected_to_you(21,0)
-    raise inspect connection_params, pretty: true, limit: 300000
+    hello = Accounts.am_i_connected_to_you(21,0)
+    # raise inspect connection_params, pretty: true, limit: 300000
 
     conn
       # |> put_flash(:info, "Your target id:")

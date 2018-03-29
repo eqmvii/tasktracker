@@ -83,20 +83,25 @@ defmodule Tasktracker.Accounts do
 
     # !! todo make this work make the query check to see if both are in the db
     # query = from c in "conections", where: c.user_one_id == my_id, select: u.name
-    query = from c in Connection, select: count(c.id), where: ^my_id == c.user_one_id
+    query = from c in Connection, select: count(c.id), where: ^my_id == c.user_one_id # and ^your_id == c.user_two_id
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     # IO.puts inspect attrs, pretty: true, limit: 30000
     # IO.puts inspect list_connections, pretty: true, limit: 30000
-    IO.puts "the qurey"
-    IO.puts Repo.all(query), pretty: true, limit: 30000
-    IO.puts "no more query"
+    IO.puts "query, first way:"
+    test_one = Repo.all(query)
+    IO.puts "= = = = = == = = = "
+    [real_item | _tail] = test_one
+    IO.puts "Answer: " <> Integer.to_string(real_item)
+    IO.puts "query, second way:"
+    query_two = from c in Connection, select: count(c.id), where: ^your_id == c.user_one_id # and ^my_id == c.user_two_id
+    test_two = Repo.all(query_two)
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
-    raise inspect Repo.all(query), pretty: true, limit: 30000
-    
+    # raise inspect Repo.all(query), pretty: true, limit: 30000
+    true
   end
   # ------------------------------------------------------
 
