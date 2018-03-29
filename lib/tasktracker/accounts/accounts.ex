@@ -81,8 +81,20 @@ defmodule Tasktracker.Accounts do
   def am_i_connected_to_you(my_id, your_id) do
     # Repo.get!(User, id)
 
+    # !! todo make this work make the query check to see if both are in the db
     # query = from c in "conections", where: c.user_one_id == my_id, select: u.name
-    query = from c in Connection, select: count(c.id)
+    query = from c in Connection, select: count(c.id), where: ^my_id == c.user_one_id
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+    # IO.puts inspect attrs, pretty: true, limit: 30000
+    # IO.puts inspect list_connections, pretty: true, limit: 30000
+    IO.puts "the qurey"
+    IO.puts Repo.all(query), pretty: true, limit: 30000
+    IO.puts "no more query"
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
+    IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     raise inspect Repo.all(query), pretty: true, limit: 30000
     
   end
