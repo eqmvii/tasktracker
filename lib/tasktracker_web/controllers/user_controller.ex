@@ -42,9 +42,9 @@ defmodule TasktrackerWeb.UserController do
     user = Accounts.get_user!(id)
     connected = 
       if Accounts.am_i_connected_to_you(my_id, your_id) do
-        "True!"
+        true
       else
-        "False :("
+        false
       end
     render(conn, "show.html", user: user, connected: connected)
   end
@@ -91,7 +91,8 @@ defmodule TasktrackerWeb.UserController do
 
     conn
       # |> put_flash(:info, "Your target id:")
-      |> render("me.html", user: user)
+      # |> render("me.html", user: user)
+      |> redirect to: "/users/#{your_id}"
   end
 
   def clearconnections(conn, _) do

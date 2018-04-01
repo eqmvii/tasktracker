@@ -26,13 +26,21 @@
 
   <li>
     <strong>Are we connected?</strong>
-    <%= @conn.assigns.connected %>
+    <%= if @conn.assigns.connected do %>
+      <span>We are connected!</span>
+    <%= else %>
+      <span>We are not connected :(</span>
+    <%= end %>
   </li>
 
 </ul>
 
 <!-- TODO: check to see if possible and build this out -->
-<span class="text-center"><%= link "Connect to Me", to: user_path(@conn, :connect, @user) %></span>
+<%= if @conn.assigns.connected do %>
+  <span class="text-center">(Already connected)</span>
+<%= else %>
+  <span class="text-center"><%= link "Connect to Me", to: user_path(@conn, :connect, @user) %></span>
+<%= end %>
 
 
 <!--
