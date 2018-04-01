@@ -86,6 +86,7 @@ defmodule Tasktracker.Accounts do
     Repo.all(Connection)
   end
 
+  # !! TODO: Refactor assuming the lower id always comes first in the table
   def am_i_connected_to_you(my_id, your_id) do
     # Repo.get!(User, id)
 
@@ -107,11 +108,17 @@ defmodule Tasktracker.Accounts do
     test_two = Repo.all(query_two)
     [real_item_two | _tail] = test_two
     IO.puts "Answer_Two: " <> Integer.to_string(real_item_two)
+    total = real_item_two + real_item
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     # raise inspect Repo.all(query), pretty: true, limit: 30000
-    true
+    # return true or false...
+    if total > 0 do
+      true
+    else
+      false
+    end
   end
   # ------------------------------------------------------
 

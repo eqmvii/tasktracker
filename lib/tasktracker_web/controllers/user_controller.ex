@@ -37,8 +37,16 @@ defmodule TasktrackerWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
+    my_id = get_session(conn, :user_id)
+    your_id = String.to_integer(id)
     user = Accounts.get_user!(id)
-    render(conn, "show.html", user: user)
+    connected = 
+      if Accounts.am_i_connected_to_you(my_id, your_id) do
+        "True!"
+      else
+        "False :("
+      end
+    render(conn, "show.html", user: user, connected: connected)
   end
 
   def me(conn, _) do
@@ -51,13 +59,22 @@ defmodule TasktrackerWeb.UserController do
 
   def connect(conn, %{"id" => id}) do
     my_id = get_session(conn, :user_id)
-    user = Accounts.get_user!(my_id)
+    your_id = String.to_integer(id)
+    user = Accounts.get_user!(my_id) # comment this out?
 
     # |> cast(attrs, [:user_one_id, :user_two_id, :status, :last_moving_user])
 
-    connection_params = %{user_one_id: my_id, user_two_id: String.to_integer(id), status: 17, last_moving_user: 17}
+    if my_id < your_id do
+      user_one_id = my_id
+      user_two_id = your_id
+    else
+      user_one_id = your_id
+      user_two_id = my_id
+    end
 
-    hello = Accounts.am_i_connected_to_you(my_id, id)
+    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 17, last_moving_user: 17}
+
+    hello = Accounts.am_i_connected_to_you(my_id, your_id)
 
     case Accounts.create_connection(connection_params) do
       {:ok, connection} ->
