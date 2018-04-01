@@ -61,3 +61,7 @@
 </table>
 
 <span><%= link "New User", to: user_path(@conn, :new) %></span>
+<br />
+<span class="text-center"><%= link "DELETE ALL CONNECTIONS", to: user_path(@conn, :clearconnections) %></span>
+
+

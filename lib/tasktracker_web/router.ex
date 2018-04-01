@@ -23,6 +23,7 @@ defmodule TasktrackerWeb.Router do
     resources "/todos", TodoController
     get "/users/me", UserController, :me
     get "/users/connect/:id", UserController, :connect
+    get "/users/clearconnections", UserController, :clearconnections
     resources "/users", UserController    
     resources "/sitesession", SitesessionController, only: [:new, :index]
     post "/sitesession/test", SitesessionController, :test

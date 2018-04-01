@@ -47,6 +47,8 @@ defmodule TasktrackerWeb.UserController do
     render(conn, "me.html", user: user)
   end
 
+  # # # # # # #
+
   def connect(conn, %{"id" => id}) do
     my_id = get_session(conn, :user_id)
     user = Accounts.get_user!(my_id)
@@ -54,6 +56,8 @@ defmodule TasktrackerWeb.UserController do
     # |> cast(attrs, [:user_one_id, :user_two_id, :status, :last_moving_user])
 
     connection_params = %{user_one_id: my_id, user_two_id: String.to_integer(id), status: 17, last_moving_user: 17}
+
+    hello = Accounts.am_i_connected_to_you(my_id, id)
 
     case Accounts.create_connection(connection_params) do
       {:ok, connection} ->
@@ -65,13 +69,22 @@ defmodule TasktrackerWeb.UserController do
     end
 
     # !! work on this make it work: pass my_id and this users id
-    hello = Accounts.am_i_connected_to_you(21,0)
+    hello = Accounts.am_i_connected_to_you(my_id, id)
     # raise inspect connection_params, pretty: true, limit: 300000
 
     conn
       # |> put_flash(:info, "Your target id:")
       |> render("me.html", user: user)
   end
+
+  def clearconnections(conn, _) do
+    Accounts.delete_all_connections()
+    conn
+      |> put_flash(:info, "Deleted all connections successfully.")
+      |> redirect(to: user_path(conn, :index))
+  end
+
+  # # # # # # # # #
 
   def edit(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)

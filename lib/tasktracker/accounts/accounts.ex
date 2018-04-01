@@ -59,6 +59,14 @@ defmodule Tasktracker.Accounts do
 
   # ------------------------------------------------------
   # TODO: This is where I am. The connection data is getting inserted. Something weird is happening with redirect.
+  def delete_all_connections() do
+    # * DELETE FROM tablename
+    query = from c in Connection
+    Repo.delete_all(query)
+    IO.puts "Delete all connections was called!"
+  end
+
+
   def create_connection(attrs \\ %{}) do
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
@@ -83,7 +91,7 @@ defmodule Tasktracker.Accounts do
 
     # !! todo make this work make the query check to see if both are in the db
     # query = from c in "conections", where: c.user_one_id == my_id, select: u.name
-    query = from c in Connection, select: count(c.id), where: ^my_id == c.user_one_id # and ^your_id == c.user_two_id
+    query = from c in Connection, select: count(c.id), where: ^my_id == c.user_one_id and ^your_id == c.user_two_id
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
@@ -95,8 +103,10 @@ defmodule Tasktracker.Accounts do
     [real_item | _tail] = test_one
     IO.puts "Answer: " <> Integer.to_string(real_item)
     IO.puts "query, second way:"
-    query_two = from c in Connection, select: count(c.id), where: ^your_id == c.user_one_id # and ^my_id == c.user_two_id
+    query_two = from c in Connection, select: count(c.id), where: ^your_id == c.user_one_id and ^my_id == c.user_two_id
     test_two = Repo.all(query_two)
+    [real_item_two | _tail] = test_two
+    IO.puts "Answer_Two: " <> Integer.to_string(real_item_two)
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
