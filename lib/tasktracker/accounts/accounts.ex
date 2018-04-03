@@ -90,6 +90,26 @@ defmodule Tasktracker.Accounts do
   def am_i_connected_to_you(my_id, your_id) do
     # Repo.get!(User, id)
 
+    if my_id < your_id do
+      user_one_id = my_id
+      user_two_id = your_id
+    else
+      user_one_id = your_id
+      user_two_id = my_id
+    end
+
+    real_query = from c in Connection, select: count(c.id), where: ^user_one_id == c.user_one_id and ^user_two_id == c.user_two_id
+    query_results = Repo.all(real_query)
+    [real_count | _tail ] = query_results
+
+    if real_count > 0 do
+      real_second_query = from c in Connection, where: ^user_one_id == c.user_one_id and ^user_two_id == c.user_two_id
+      the_one = Repo.one(real_second_query)
+      status_to_return = the_one.status
+    else
+      status_to_return = "we are not connected jeeze"
+    end
+
     # !! todo make this work make the query check to see if both are in the db
     # query = from c in "conections", where: c.user_one_id == my_id, select: u.name
     query = from c in Connection, select: count(c.id), where: ^my_id == c.user_one_id and ^your_id == c.user_two_id
@@ -98,6 +118,8 @@ defmodule Tasktracker.Accounts do
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     # IO.puts inspect attrs, pretty: true, limit: 30000
     # IO.puts inspect list_connections, pretty: true, limit: 30000
+    IO.puts "real_query"
+    IO.puts status_to_return
     IO.puts "query, first way:"
     test_one = Repo.all(query)
     IO.puts "= = = = = == = = = "

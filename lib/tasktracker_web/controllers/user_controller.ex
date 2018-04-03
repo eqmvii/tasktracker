@@ -74,6 +74,7 @@ defmodule TasktrackerWeb.UserController do
 
     connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 17, last_moving_user: 17}
 
+    IO.puts "FIRST am_i_connected"
     hello = Accounts.am_i_connected_to_you(my_id, your_id)
 
     case Accounts.create_connection(connection_params) do
@@ -86,6 +87,8 @@ defmodule TasktrackerWeb.UserController do
     end
 
     # !! work on this make it work: pass my_id and this users id
+    IO.puts "SECOND am_i_connected"
+
     hello = Accounts.am_i_connected_to_you(my_id, id)
     # raise inspect connection_params, pretty: true, limit: 300000
 
