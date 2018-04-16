@@ -25,21 +25,29 @@
   </li>
 
   <li>
-    <strong>Are we connected?</strong>
+    <strong>Are we connected?:</strong>
     <%= if @conn.assigns.connected do %>
       <span>We are connected!</span>
     <%= else %>
       <span>We are not connected :(</span>
     <%= end %>
   </li>
+  <li>
+    <strong>Connection Status:</strong> <%= @conn.assigns.connection_status %>
+  </li>
 
 </ul>
 
 <!-- TODO: check to see if possible and build this out -->
 <%= if @conn.assigns.connected do %>
-  <span class="text-center">(Already connected)</span>
+  <span class="text-center">(You are already connected)</span>
 <%= else %>
-  <span class="text-center"><%= link "Connect to Me", to: user_path(@conn, :connect, @user) %></span>
+  <p class="text-center">User: <%= @user.name %></p>
+  <p class="text-center"><%= link "DIRECT CONNECT", to: user_path(@conn, :connect, @user.id) %></p>
+  <p class="text-center"><%= link "Send connection request", to: user_path(@conn, :connectrequest, @user.id) %></p>
+    <p class="text-center"><%= link "Confirm friend request", to: user_path(@conn, :connectconfirm, @user.id) %></p>
+
+
 <%= end %>
 
 

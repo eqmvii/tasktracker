@@ -66,7 +66,6 @@ defmodule Tasktracker.Accounts do
     IO.puts "Delete all connections was called!"
   end
 
-
   def create_connection(attrs \\ %{}) do
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
@@ -77,16 +76,72 @@ defmodule Tasktracker.Accounts do
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
     IO.puts " % % % % % % % % % % % %W OWOWLWOL % % % % % % % % % % % %W OWOWLWOL  "
 
+    #   def update_todo(%Todo{} = todo, attrs) do
+    # todo
+    #  |> Todo.changeset(attrs)
+    #  |> Repo.update()
+    # end
+
+
     %Connection{}
     |> Connection.changeset(attrs)
     |> Repo.insert()
+  end
+
+  # !! THIS IS ALL BUSTED AND NOT WORKING AND YOU ARE STOPPED RIGHT HREE 
+  def update_connection(attrs \\ %{}) do
+    raise inspect attrs
+    das_connection = Accounts.get_connection!(id) # THIS IS BUSTED AND HALF FORMED AND TOTALLY BUSTED
+    %Connection{}
+    |> Connection.changeset(attrs)
+    |> Repo.update()
   end
 
   def list_connections do
     Repo.all(Connection)
   end
 
+  # ugly and needs refactoring like woah
+  def connection_status(my_id, your_id) do
+    if my_id < your_id do
+      user_one_id = my_id
+      user_two_id = your_id
+    else
+      user_one_id = your_id
+      user_two_id = my_id
+    end
+
+    real_query = from c in Connection, select: count(c.id), where: ^user_one_id == c.user_one_id and ^user_two_id == c.user_two_id
+    query_results = Repo.all(real_query)
+    [real_count | _tail ] = query_results
+
+    if real_count > 0 do
+      real_second_query = from c in Connection, where: ^user_one_id == c.user_one_id and ^user_two_id == c.user_two_id
+      the_one = Repo.one(real_second_query)
+      status_to_return = the_one.status
+    else
+      create_blank_connection(my_id, your_id)
+      status_to_return = 0
+    end
+
+    status_to_return    
+  end
+
+  defp create_blank_connection(my_id, your_id) do
+    if my_id < your_id do
+      user_one_id = my_id
+      user_two_id = your_id
+    else
+      user_one_id = your_id
+      user_two_id = my_id
+    end
+
+    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 0, last_moving_user: 0}
+    create_connection(connection_params)
+  end
+
   # !! TODO: Refactor assuming the lower id always comes first in the table
+  # !! TODO: Refactor / remove this ugly logic that is largely just testing to see if the connection is in the DB at all.
   def am_i_connected_to_you(my_id, your_id) do
     # Repo.get!(User, id)
 

@@ -41,12 +41,13 @@ defmodule TasktrackerWeb.UserController do
     your_id = String.to_integer(id)
     user = Accounts.get_user!(id)
     connected = 
-      if Accounts.am_i_connected_to_you(my_id, your_id) do
+      if Accounts.connection_status(my_id, your_id) > 0 do
         true
       else
         false
       end
-    render(conn, "show.html", user: user, connected: connected)
+    connection_status = Accounts.connection_status(my_id, your_id)
+    render(conn, "show.html", user: user, connected: connected, connection_status: connection_status)
   end
 
   def me(conn, _) do
@@ -56,6 +57,26 @@ defmodule TasktrackerWeb.UserController do
   end
 
   # # # # # # #
+
+  def connectconfirm(conn, %{"id" => id}) do
+    my_id = get_session(conn, :user_id)
+    your_id = String.to_integer(id)
+    user = Accounts.get_user!(my_id) # comment this out?
+
+
+    conn
+    |> redirect to: "/users/me"
+  end
+
+  def connectrequest(conn, %{"id" => id}) do
+    my_id = get_session(conn, :user_id)
+    your_id = String.to_integer(id)
+    user = Accounts.get_user!(my_id) # comment this out?
+
+
+    conn
+    |> redirect to: "/users/me"
+  end
 
   def connect(conn, %{"id" => id}) do
     my_id = get_session(conn, :user_id)
@@ -72,15 +93,15 @@ defmodule TasktrackerWeb.UserController do
       user_two_id = my_id
     end
 
-    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 17, last_moving_user: 17}
+    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 17, last_moving_user: my_id}
 
     IO.puts "FIRST am_i_connected"
     hello = Accounts.am_i_connected_to_you(my_id, your_id)
 
-    case Accounts.create_connection(connection_params) do
+    case Accounts.update_connection(connection_params) do
       {:ok, connection} ->
         conn
-        |> put_flash(:info, "Connection creation succesful #{connection.status}!")
+        |> put_flash(:info, "Connection update succesful #{connection.status}!")
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Error creating connection")
