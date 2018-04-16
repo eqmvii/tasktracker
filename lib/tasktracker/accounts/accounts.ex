@@ -84,15 +84,19 @@ defmodule Tasktracker.Accounts do
 
 
     %Connection{}
-    |> Connection.changeset(attrs)
-    |> Repo.insert()
+      |> Connection.changeset(attrs)
+      |> Repo.insert()
   end
 
   # !! THIS IS ALL BUSTED AND NOT WORKING AND YOU ARE STOPPED RIGHT HREE 
+  # this should only be called when the logic can be sure the connection, even if blank, has already been created
   def update_connection(attrs \\ %{}) do
-    raise inspect attrs
-    das_connection = Accounts.get_connection!(id) # THIS IS BUSTED AND HALF FORMED AND TOTALLY BUSTED
-    %Connection{}
+    query = from c in Connection, where: ^attrs.user_one_id == c.user_one_id and ^attrs.user_two_id == c.user_two_id
+    this_connection = Repo.one(query)
+    # raise inspect this_connection
+
+    # raise inspect attrs
+    this_connection
     |> Connection.changeset(attrs)
     |> Repo.update()
   end

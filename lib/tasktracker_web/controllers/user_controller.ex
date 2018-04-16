@@ -93,7 +93,7 @@ defmodule TasktrackerWeb.UserController do
       user_two_id = my_id
     end
 
-    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 17, last_moving_user: my_id}
+    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 100, last_moving_user: my_id}
 
     IO.puts "FIRST am_i_connected"
     hello = Accounts.am_i_connected_to_you(my_id, your_id)
