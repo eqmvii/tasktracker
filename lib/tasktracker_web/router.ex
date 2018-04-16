@@ -25,6 +25,7 @@ defmodule TasktrackerWeb.Router do
     get "/users/connect/:id", UserController, :connect
     get "/users/connectrequest/:id", UserController, :connectrequest
     get "/users/connectconfirm/:id", UserController, :connectconfirm
+    get "/users/disconnect/:id", UserController, :disconnect
     get "/users/clearconnections", UserController, :clearconnections
     resources "/users", UserController    
     resources "/sitesession", SitesessionController, only: [:new, :index]

@@ -78,13 +78,39 @@ defmodule TasktrackerWeb.UserController do
       {:ok, connection} ->
         conn
         |> put_flash(:info, "Connection request sent! Status: #{connection.status}!")
+        |> redirect to: "/users/#{your_id}"
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Error creating connection")
+        |> redirect to: "/users/#{your_id}"
+    end
+  end
+
+  def disconnect(conn, %{"id" => id}) do
+    my_id = get_session(conn, :user_id)
+    your_id = String.to_integer(id)
+    user = Accounts.get_user!(my_id) # comment this out?
+
+    if my_id < your_id do
+      user_one_id = my_id
+      user_two_id = your_id
+    else
+      user_one_id = your_id
+      user_two_id = my_id
     end
 
-    conn
-    |> redirect to: "/users/#{your_id}"
+    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 0, last_moving_user: my_id}
+
+    case Accounts.update_connection(connection_params) do
+      {:ok, connection} ->
+        conn
+        |> put_flash(:info, "You are no longer friends! Status: #{connection.status}!")
+        |> redirect to: "/users/#{your_id}"
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "Error creating connection")
+        |> redirect to: "/users/#{your_id}"
+      end    
   end
 
   def connectrequest(conn, %{"id" => id}) do
@@ -106,13 +132,12 @@ defmodule TasktrackerWeb.UserController do
       {:ok, connection} ->
         conn
         |> put_flash(:info, "Connection request sent! Status: #{connection.status}!")
+        |> redirect to: "/users/#{your_id}"
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_flash(:error, "Error creating connection")
+        |> redirect to: "/users/#{your_id}"
     end
-
-    conn
-    |> redirect to: "/users/#{your_id}"
   end
 
   def connect(conn, %{"id" => id}) do

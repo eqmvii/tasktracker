@@ -1,3 +1,5 @@
+# Next up: finish the connection logic
+
 # Tasks (and rough points estimates)
 
 * Make less ugly / add any CSS at all (1)
