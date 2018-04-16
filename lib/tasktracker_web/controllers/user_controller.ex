@@ -58,14 +58,33 @@ defmodule TasktrackerWeb.UserController do
 
   # # # # # # #
 
+  # !! TODO: Add logic to error check/make this work 
   def connectconfirm(conn, %{"id" => id}) do
     my_id = get_session(conn, :user_id)
     your_id = String.to_integer(id)
     user = Accounts.get_user!(my_id) # comment this out?
 
+    if my_id < your_id do
+      user_one_id = my_id
+      user_two_id = your_id
+    else
+      user_one_id = your_id
+      user_two_id = my_id
+    end
+
+    connection_params = %{user_one_id: user_one_id, user_two_id: user_two_id, status: 2, last_moving_user: my_id}
+
+    case Accounts.update_connection(connection_params) do
+      {:ok, connection} ->
+        conn
+        |> put_flash(:info, "Connection request sent! Status: #{connection.status}!")
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_flash(:error, "Error creating connection")
+    end
 
     conn
-    |> redirect to: "/users/me"
+    |> redirect to: "/users/#{your_id}"
   end
 
   def connectrequest(conn, %{"id" => id}) do
