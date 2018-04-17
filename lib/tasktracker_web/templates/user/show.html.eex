@@ -35,6 +35,24 @@
   <li>
     <strong>Connection Status:</strong> <%= @conn.assigns.connection_status %>
   </li>
+  <%= if @conn.assigns.connection_status == 0 do %>
+    <li>
+      Connection status was 0
+    </li>
+  <%= end %>
+  <%= if @conn.assigns.connection_status == 1 do %>
+    <li>
+      Connection status was 1
+    </li>
+  <%= end %>
+  <%= if @conn.assigns.connection_status == 2 do %>
+    <li>
+      Connection status was 2
+    </li>
+  <%= end %>
+
+  
+
 
 </ul>
 

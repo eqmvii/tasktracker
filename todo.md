@@ -1,4 +1,4 @@
-# Next up: finish the connection logic
+# Next up: finish the connection logic by thinking through who can accept a friends request and what built in logic is needed to get there
 
 # Tasks (and rough points estimates)
 
